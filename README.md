@@ -30,7 +30,7 @@ The system partitions functionality between the Arm core and FPGA:
 
 
 
-## ‼️Problem Statement
+## ‼️Problem Identified
 
 The agricultural and food processing industry handles millions of tons of fruit daily. Currently, quality control and ripeness sorting rely heavily on manual human inspection or optical sorting machines. Manual inspection is slow, highly subjective, and prone to fatigue-induced errors, leading to massive food waste and inconsistent product quality. As factory conveyor belts increase in speed to meet global supply chain demands, traditional sorting methods are becoming the primary bottleneck in agricultural production lines, resulting a immediate action for this problem. In the advent of Edge AI , deploying it a well trained AI model is possible even without a powerful processor or a CPU/GPU.
 
@@ -65,11 +65,11 @@ This co-design achieves the throughput of custom silicon while maintaining the f
 
 
 
-## 4. Uniqueness of the Solution: Smart Preprocessing
+## 🧠 Uniqueness of the Solution: Smart Preprocessing
 
 What separates this architecture from standard edge AI deployments is the highly optimized preprocessing pipeline designed specifically to minimize unnecessary compute cycles and DMA bandwidth usage.
 
-### Region of Interest (ROI) Extraction
+### Region of Interest (ROI) Extraction on the pre-process side:
 Rather than flooding the neural network with entire 1080p camera frames containing mostly empty conveyor belt space, the system utilizes a fast ROI extraction step. 
 * It dynamically identifies the bounding box of the physical fruit.
 * It crops and scales only the relevant pixel data to the 128x128 input required by the accelerator.
@@ -77,11 +77,27 @@ Rather than flooding the neural network with entire 1080p camera frames containi
 
 
 
-### Custom Temporal Gate IP
+### Custom Temporal Gate IP on the PL Block:
 The absolute core innovation of this hardware design is the custom **Temporal Gate IP** placed before the Neural Network accelerator in the FPGA fabric. 
 * In a factory setting, there are frequent gaps between fruits on a belt. Standard AI pipelines waste massive amounts of power and compute resources continuously evaluating empty frames.
 * The Temporal Gate acts as a hardware-level trigger. It compares incoming pixel streams and only allows data to pass into the heavy MobileNetV2 IP block if a significant change (a new fruit entering the frame) is detected.
 * If the frame is static, the gate remains closed, idling the downstream AI hardware and saving significant power, making this an incredibly green, energy-efficient solution for massive industrial scaling.
 
+
+## 🧪 Ripeness Classes Considered
+
+The system classifies inputs into four distinct ripeness stages:
+
+[![Unripe](https://img.shields.io/badge/Class-Unripe-darkgreen)](#)
+[![Ripe](https://img.shields.io/badge/Class-Ripe-yellow)](#)
+[![Overripe](https://img.shields.io/badge/Class-Overripe-orange)](#)
+[![Rotten](https://img.shields.io/badge/Class-Rotten-darkred)](#)
+
+| Ripeness Stage | Description |
+|--------------|-------------|
+| **Unripe** | Early stage, firm texture, typically green coloration. |
+| **Ripe** | Optimal consumption stage, peak color and texture. |
+| **Overripe** | Past optimal stage, structural softening, minor blemishes. |
+| **Rotten** | Severe degradation, significant dark spots, and texture collapse. |
 ---
-*Developed and maintained by Team ZARCOS Automation.*
+*Developed and maintained by ![Tatikonda Ramakrishna](https://github.com/Techwithram) , ![Madhivanan V](https://github.com/Mathivanan17) , ![K Kavya]()*
