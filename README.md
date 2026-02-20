@@ -4,6 +4,7 @@
 ![OS](https://img.shields.io/badge/OS-Ubuntu_Linux-orange)
 ![Framework](https://img.shields.io/badge/Framework-TensorFlow_Lite-FF6F00)
 ![Hardware](https://img.shields.io/badge/Hardware-Custom_Temporal_IP-brightgreen)
+![Bharat SoC Challenge](https://arm-university.github.io/Arm-Developer-Labs/Challenge_Page.html)
 
 A high-performance, bare-metal hardware/software co-design edge AI application for detecting fruit quality and ripeness (Apples, Oranges, Mangos, Bananas). Built natively on Ubuntu Linux for the AMD/Xilinx Kria KV260, this project partitions a custom MobileNetV2 architecture across Programmable Logic (PL) and the ARM Cortex-A53 processor to achieve ultra-low latency industrial sorting.
 
