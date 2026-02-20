@@ -11,12 +11,12 @@ A high-performance, bare-metal hardware/software co-design edge AI application f
 
 ---
 
-## 1. Objective
+## 🔍 Objective:
 
 To design and implement a hardware-accelerated CNN inference system on a Xilinx Zynq SoC, leveraging FPGA fabric to achieve real-time object detection or image classification, and quantitatively demonstrate performance improvements over a CPU-only implementation.
 
 
-## 2. Project Description
+## 🚀 Project Description
 
 This project focuses on accelerating edge AI workloads on embedded platforms using hardware/software co-design. Students will implement a lightweight convolutional neural network (CNN) for object detection or image classification on a Xilinx Zynq SoC, which integrates an Arm processor with FPGA fabric.
 
@@ -27,26 +27,26 @@ The system partitions functionality between the Arm core and FPGA:
 
 
 
-## 3. Problem Statement
+##‼️ Problem Statement
 
 The agricultural and food processing industry handles millions of tons of fruit daily. Currently, quality control and ripeness sorting rely heavily on manual human inspection or optical sorting machines. Manual inspection is slow, highly subjective, and prone to fatigue-induced errors, leading to massive food waste and inconsistent product quality. As factory conveyor belts increase in speed to meet global supply chain demands, traditional sorting methods are becoming the primary bottleneck in agricultural production lines, resulting a immediate action for this problem. In the advent of Edge AI , deploying it a well trained AI model is possible even without a powerful processor or a CPU/GPU.
 
 
 
-## 4. Industry Gaps & The Necessity of Edge AI
+## 🏭 Industry Gaps & The Necessity of Edge AI
 
 There is a massive gap in how modern fruit processing companies and exporting companies in handling automated quality control of the fruits ripeness. 
 
 **The Flaws in Current Approaches:**
-* **Basic Optical Sensors:** Standard color-sorting cameras cannot detect complex bruising, localized rot, or subtle ripeness indicators (like the transition of gradients on a mango).
-* **Cloud-Connected AI:** Sending high-definition factory video feeds to cloud servers for AI analysis introduces catastrophic latency. On a fast-moving conveyor belt, a round-trip delay of even 200 milliseconds means the targeted fruit has already passed the mechanical sorting arm. Furthermore, streaming constant video requires massive bandwidth and poses a critical single point of failure—if the factory's internet drops, the entire production line stops.
+* **🔦 Basic Optical Sensors:** Standard color-sorting cameras cannot detect complex bruising, localized rot, or subtle ripeness indicators (like the transition of gradients on a mango).
+* **☁️ Cloud-Connected AI:** Sending high-definition factory video feeds to cloud servers for AI analysis introduces catastrophic latency. On a fast-moving conveyor belt, a round-trip delay of even 200 milliseconds means the targeted fruit has already passed the mechanical sorting arm. Furthermore, streaming constant video requires massive bandwidth and poses a critical single point of failure—if the factory's internet drops, the entire production line stops.
 
-**The Edge AI Mandate:**
+**🤖 The Edge AI Mandate:**
 To solve this, advanced inference must be brought directly to the edge—literally positioned over the conveyor belt. Edge AI is the *only* alternative that guarantees deterministic, real-time latency without relying on external network bandwidth. However, deploying heavy Convolutional Neural Networks (CNNs) on standard embedded processors (like Raspberry Pis or basic industrial PCs) results in thermal throttling and low frame rates. True real-time industrial sorting requires dedicated hardware acceleration.
 
 
 
-## 5. The Proposed Solution: Heterogeneous Co-Design
+## 💡 The Proposed Solution: Heterogeneous Co-Design
 
 This project completely bypasses the limitations of standard embedded processors by utilizing a custom hardware-software partitioned architecture on the Kria KV260 Vision AI Starter Kit.
 
