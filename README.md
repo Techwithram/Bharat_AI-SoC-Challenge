@@ -57,8 +57,8 @@ Instead of running the entire AI model sequentially on a CPU, the workload is ph
 This co-design achieves the throughput of custom silicon while maintaining the flexibility of a software-based classification tail.
 
   ### Gaps in the Edge AI platform:
-      * The Edge AI platform running large CNN models with a faster FPS cameras , takes the same image of the fruit with the same orientation and everytime there is a new frame available standard , it is sent to the CNN model to process irrespective of the fact that the present frame is as same as the previous one resulting in wastage of the Edge device's resources.
-      * And for the cameras with greater FPS , there is always a possibility that the camera takes frames even if there is no motion in the object or the fruit on the conveyer belt itself , this further leads to the wastage of the Edge device's resources and decreasing the thrrouput of the model.
+  * The Edge AI platform running large CNN models with a faster FPS cameras , takes the same image of the fruit with the same orientation and everytime there is a new frame available standard , it is sent to the CNN model to process irrespective of the fact that the present frame is as same as the previous one resulting in wastage of the Edge device's resources.
+  * And for the cameras with greater FPS , there is always a possibility that the camera takes frames even if there is no motion in the object or the fruit on the conveyer belt itself , this further leads to the wastage of the Edge device's resources and decreasing the thrrouput of the model.
 
 
 
