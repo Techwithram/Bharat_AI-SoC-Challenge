@@ -16,7 +16,7 @@ Instead of writing complex Verilog or VHDL by hand, Vitis HLS allows us to defin
 ### `temporal.cpp` & `temporal.h` (The Smart Preprocessor)
 * **What they are:** The C++ source and header files for the custom Temporal Gate IP.
 * **Why they are created:** To implement the localized frame-differencing logic that acts as a hardware-level power switch, dropping idle video frames before they reach the heavy neural network.
-* **How they work:** * The inputs and outputs are defined using the `hls::stream` datatype to natively support the AXI4-Stream video protocol. 
+* **How they work:**  The inputs and outputs are defined using the `hls::stream` datatype to natively support the AXI4-Stream video protocol. 
   * An internal static array acts as a line buffer to store the previous frame's pixels. 
   * We utilize `#pragma HLS INTERFACE s_axilite` to expose the gate's sensitivity threshold variable to the ARM processor as a memory-mapped control register.
 
@@ -25,7 +25,7 @@ Instead of writing complex Verilog or VHDL by hand, Vitis HLS allows us to defin
 ### `accelerator.cpp` & `accelerator.h` (The Layers IP)
 * **What they are:** The C++ core of our MobileNetV2 feature-extraction engine.
 * **Why they are created:** Standard processors execute matrix multiplications sequentially. This IP explicitly defines the depthwise separable convolutions of Layers 1 through 8 so they can be offloaded to the FPGA's DSP slices.
-* **How they work:** * The code consists of deeply nested `for` loops performing the convolution mathematics. 
+* **How they work:**  The code consists of deeply nested `for` loops performing the convolution mathematics. 
   * To achieve extreme throughput, we apply `#pragma HLS UNROLL` to physically duplicate the math operations in hardware, and `#pragma HLS PIPELINE` to allow the engine to accept a new pixel every single clock cycle.
 
 <br/>
