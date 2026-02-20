@@ -27,7 +27,7 @@ The system partitions functionality between the Arm core and FPGA:
 
 
 
-##‼️ Problem Statement
+## ‼️ Problem Statement
 
 The agricultural and food processing industry handles millions of tons of fruit daily. Currently, quality control and ripeness sorting rely heavily on manual human inspection or optical sorting machines. Manual inspection is slow, highly subjective, and prone to fatigue-induced errors, leading to massive food waste and inconsistent product quality. As factory conveyor belts increase in speed to meet global supply chain demands, traditional sorting methods are becoming the primary bottleneck in agricultural production lines, resulting a immediate action for this problem. In the advent of Edge AI , deploying it a well trained AI model is possible even without a powerful processor or a CPU/GPU.
 
