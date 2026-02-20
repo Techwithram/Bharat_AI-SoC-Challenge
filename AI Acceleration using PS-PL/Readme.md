@@ -37,6 +37,7 @@ When we initially designed this heterogeneous architecture, our baseline expecta
 ---
 
 <br/>
+
 ## 📊 3. Final Results Obtained
 
 
