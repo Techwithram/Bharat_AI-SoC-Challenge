@@ -12,6 +12,8 @@ This implementation serves two critical purposes:
 2. **Benchmarking:** It establishes a baseline CPU inference latency (Frames Per Second) to directly compare against our custom FPGA hardware accelerator.
 
 ---
+<br/>
+
 
 ## ⚙️ The Software Stack
 
@@ -20,8 +22,11 @@ Running full TensorFlow/Keras (`.h5` files) on an embedded ARM processor is high
 
 
 We utilize the lightweight `tflite_runtime` library instead of the massive standard TensorFlow package, which saves memory and allows the Kria board to dedicate maximum CPU cycles to the actual matrix multiplications.
+<br/>
 
 ---
+
+<br/>
 
 ## 🔄 The Inference Pipeline (Step-by-Step)
 
@@ -29,6 +34,7 @@ The `arm_inference.py` script acts as the complete edge AI pipeline. Here is exa
 
 ### 1. Image Capture
 The script opens a video stream using standard OpenCV (`cv2.VideoCapture`). It continuously grabs raw BGR frames from the USB/MIPI camera connected to the Kria board.
+<br/>
 
 ### 2. Preprocessing & Formatting
 
@@ -36,15 +42,19 @@ Neural networks are extremely strict about the data they ingest. The raw 1080p c
 * **Resizing:** The model was trained on 128x128 pixel images. OpenCV uses `cv2.resize(frame, (128, 128))` to compress the visual data down to the exact expected tensor shape.
 * **Normalization:** Raw pixel values range from 0 to 255. The script divides the array by 255.0 to scale the data to a `[0.0, 1.0]` float32 range, matching the exact normalization used during the Kaggle training phase.
 * **Dimension Expansion:** The TFLite interpreter expects a batch dimension. `np.expand_dims` converts the `(128, 128, 3)` image into a `(1, 128, 128, 3)` tensor.
+  
 
 ### 3. Model Execution
 The preprocessed tensor is loaded into the TFLite Interpreter. The `interpreter.invoke()` command forces the ARM CPU to calculate all the MobileNetV2 depthwise separable convolutions sequentially.
+<br/>
+
 
 ### 4. Post-Processing & Display
 The model outputs an array of 14 probabilities (one for each fruit/ripeness class).
 * The script uses `np.argmax()` to find the index of the highest probability.
 * This index is mapped to the `CLASS_NAMES` array to retrieve the human-readable string (e.g., `mango-ripe`).
 * OpenCV draws a bounding box around the frame and overlays the textual prediction and confidence score before rendering the frame to the monitor.
+<br/>
 
 ---
 
@@ -53,3 +63,17 @@ The model outputs an array of 14 probabilities (one for each fruit/ripeness clas
 **1. Prerequisites on the Kria KV260:**
 ```bash
 pip3 install opencv-python numpy tflite-runtime
+```
+
+## 2. Convert the Full Model to TFLite (If not done already):
+
+Ensure you have the full fruit_ripeness_full.tflite model sitting in this directory.
+
+
+## 3. Run the Inference Script:
+```bash
+python3 arm_inference.py
+```
+<br/>
+
+
