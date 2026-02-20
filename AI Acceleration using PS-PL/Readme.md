@@ -23,6 +23,8 @@ Rather than using a single generic bus, our architecture strategically deploys t
 By utilizing an **AXI Interconnect** IP block in Vivado, we successfully multiplexed these various protocols, ensuring the neural network has a dedicated, congestion-free lane to system memory.
 
 ---
+<br/>
+
 
 ## 🎯 2. Expected Performance Outcomes
 
@@ -34,6 +36,7 @@ When we initially designed this heterogeneous architecture, our baseline expecta
 
 ---
 
+<br/>
 ## 📊 3. Final Results Obtained
 
 
@@ -43,7 +46,7 @@ The hardware-software co-design dramatically outperformed the software-only base
 *(Note: Replace the placeholder numbers below with the actual metrics you record when running both the `arm_inference.py` and `host_inference.py` scripts on your Kria board!)*
 
 ### Inference Speed & Throughput
-* **Software-Only (ARM CPU) Baseline:** ~4.5 FPS (220ms latency per frame)
+* **Software-Only (ARM CPU) Baseline:** ~10 FPS (220ms latency per frame)
 * **Accelerated Co-Design (ARM + FPGA):** **~38.0 FPS** (26ms latency per frame)
 * **Performance Gain:** An **8.4x increase** in throughput. The system comfortably clears the 50ms real-time deadline required by mechanical sorting arms.
 
