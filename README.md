@@ -16,6 +16,9 @@ A high-performance, bare-metal hardware/software co-design edge AI application f
 To design and implement a hardware-accelerated CNN inference system on a Xilinx Zynq SoC, leveraging FPGA fabric to achieve real-time object detection or image classification, and quantitatively demonstrate performance improvements over a CPU-only implementation.
 
 
+
+
+
 ## 🚀 Project Description
 
 This project focuses on accelerating edge AI workloads on embedded platforms using hardware/software co-design. Students will implement a lightweight convolutional neural network (CNN) for object detection or image classification on a Xilinx Zynq SoC, which integrates an Arm processor with FPGA fabric.
